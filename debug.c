@@ -77,7 +77,7 @@ void rtl_dbgp_flag_init( struct ieee80211_hw *hw )
 	for ( i = 0; i < DBGP_TYPE_MAX; i++ )
 		rtlpriv->dbg.dbgp_type[i] = 0;
 
-	/*Init Debug flag enable condition */
+	/* Init Debug flag enable condition */
 }
 
 struct proc_dir_entry *proc_topdir;
