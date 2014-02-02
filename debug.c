@@ -82,8 +82,10 @@ void rtl_dbgp_flag_init( struct ieee80211_hw *hw )
 
 struct proc_dir_entry *proc_topdir;
 
-static int rtl_proc_get_mac_0( char *page, char **start,
-		off_t offset, int count, int *eof, void *data )
+
+// static int rtl_proc_get_mac_0( char *page, char **start, off_t offset, int count, int *eof, void *data )
+
+static int rtl_proc_get_mac_0( struct file *filp, char *buf, size_t count, loff_t *offp )
 {
 	struct ieee80211_hw *hw = data;
 	struct rtl_priv *rtlpriv = rtl_priv( hw );
@@ -802,12 +804,16 @@ void rtl_proc_remove_one( struct ieee80211_hw *hw )
 
 void rtl_proc_add_topdir( void )
 {
+    /*
     proc_topdir = create_proc_entry( "rtlwifi",
             S_IFDIR, init_net.proc_net );
+            */
+    proc_topdir = proc_create( "rtlwifi", S_IFDIR, NULL, /*const struct file_operations *proc_fops*/ NULL );
 }
 
 void rtl_proc_remove_topdir( void )
 {
 	if ( proc_topdir )
-		remove_proc_entry( "rtlwifi", init_net.proc_net );
+            proc_remove( proc_topdir );
+            /* remove_proc_entry( "rtlwifi", init_net.proc_net ); */
 }
