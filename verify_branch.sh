@@ -1,9 +1,10 @@
 #/bin/sh
 
+CUR_BRANCH="$(git status --branch | head -1 | sed 's/# On branch //g')"
+
 doSwitch () 
 {
     BRANCH="$1"
-    CUR_BRANCH="$(git status --branch | head -1 | sed 's/# On branch //g')"
     if $(git status | grep "$BRANCH" > /dev/null); then
         echo "Yes"
     else
@@ -17,7 +18,9 @@ doSwitch ()
 }
 
 echo "Verifying a sane branch for your kernel version..."
-if $(uname -r | grep "3.12" > /dev/null); then
+if $(echo "$CUR_BRANCH" | grep -i "debug" > /dev/null); then
+    read -p "You are on a debug branch ($CUR_BRANCH). WARNING: Unstable! (Enter to continue or Ctrl+C to abort):"
+elif $(uname -r | grep "3.12" > /dev/null); then
     doSwitch "fedora-20"
 elif $(uname -r | grep "3.11" > /dev/null); then
     doSwitch "ubuntu-13.10"
