@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * Copyright( c ) 2009-2010  Realtek Corporation.
+ * Copyright( c ) 2009-2012  Realtek Corporation.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of version 2 of the GNU General Public License as
@@ -25,22 +25,15 @@
  *
  * Larry Finger <Larry.Finger@lwfinger.net>
  *
- *
- * Bug Fixes and enhancements for Linux Kernels >= 3.2
- * by Benjamin Porter <BenjaminPorter86@gmail.com>
- *
- * Project homepage: https://github.com/FreedomBen/rtl8188ce-linux-driver
- *
- *
  *****************************************************************************/
 
 #ifndef __RTL_CAM_H_
 #define __RTL_CAM_H_
 
-#define CAM_CONTENT_COUNT 				8
+#define CAM_CONTENT_COUNT				8
 
-#define CFG_DEFAULT_KEY  				BIT( 5 )
-#define CFG_VALID        				BIT( 15 )
+#define CFG_DEFAULT_KEY					BIT( 5 )
+#define CFG_VALID					BIT( 15 )
 
 #define PAIRWISE_KEYIDX					0
 #define CAM_PAIRWISE_KEY_POSITION		4
